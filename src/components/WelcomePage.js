@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Button, Row, Col } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default function WelcomePage() {
   return (
@@ -8,10 +8,23 @@ export default function WelcomePage() {
       <header>
         <h1>Welcome to the ultimate fan site!</h1>
       </header>
-
-      <Link to="/characters"><Button>Rick & Morty Characters</Button></Link>
-      <Link to="/locations"><Button>Rick & Morty Locations</Button></Link>
-      <Link to="/episodes"><Button>Rick & Morty Episodes</Button></Link>
+      <Row>
+        <Col>
+          <Link to="/characters">
+            <Button>Rick & Morty Characters</Button>
+          </Link>
+        </Col>
+        <Col>
+          <Link to="/locations">
+            <Button>Rick & Morty Locations</Button>
+          </Link>
+        </Col>
+        <Col>
+          <Link to="/episodes">
+            <Button>Rick & Morty Episodes</Button>
+          </Link>
+        </Col>
+      </Row>
     </section>
   );
 }
