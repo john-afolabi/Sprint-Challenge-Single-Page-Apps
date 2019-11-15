@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import SearchForm from "./SearchForm";
+import Header from "./Header";
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -35,6 +36,7 @@ export default function CharacterList() {
 
   return (
     <div>
+      <Header/>.
       <h1>Rick and Morty Characters!</h1>
       <SearchForm search={search} searchHandler={searchHandler}/>
       <section className="character-list d-flex flex-wrap">

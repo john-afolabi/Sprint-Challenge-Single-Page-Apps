@@ -1,9 +1,18 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import "./Header.css"
 
 export default function Header() {
   return (
-    <header className="ui centered">
-      <h1 className="ui center">Rick &amp; Morty Fan Page</h1>
-    </header>
+    <nav>
+      <div className="navBar">
+        <ul>
+          <li><NavLink exact to="/">Home</NavLink></li>
+          <li><NavLink to="/characters">Characters</NavLink></li>
+          <li><NavLink to="locations">Locations</NavLink></li>
+          <li><NavLink to="episodes">Episodes</NavLink></li>
+        </ul>
+        </div>
+      </nav>
   );
 }

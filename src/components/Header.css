@@ -1,0 +1,23 @@
+.navBar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 44px;
+  }
+
+  .navBar ul li a {
+    font-size: 14px;
+    line-height: 3.14286;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .navBar ul li a.active {
+    opacity: 0.65;
+  }
+
+  nav {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
