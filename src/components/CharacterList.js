@@ -3,19 +3,29 @@ import axios from "axios";
 import CharacterCard from "./CharacterCard";
 import SearchForm from "./SearchForm";
 import Header from "./Header";
+import { Button, Col, Row } from "reactstrap";
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
   const [characters, setCharacters] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredChar, setFilteredChar] = useState([]);
+  const [next, setNext] = useState(null);
+  const [prev, setPrev] = useState(null);
+  const [currURL, setCurrURL] = useState(
+    "https://rickandmortyapi.com/api/character/"
+  );
 
   const searchHandler = e => {
     setSearch(e.target.value);
 
     setFilteredChar(
       characters.filter(char => {
-        if (char.name.toLocaleLowerCase().indexOf(e.target.value.toLocaleLowerCase()) != -1) {
+        if (
+          char.name
+            .toLocaleLowerCase()
+            .indexOf(e.target.value.toLocaleLowerCase()) !== -1
+        ) {
           return char;
         }
       })
@@ -23,27 +33,33 @@ export default function CharacterList() {
   };
 
   useEffect(() => {
-    axios.get("https://rickandmortyapi.com/api/character/").then(res => {
-      console.log(res);
-      setCharacters(res.data.results)
+    axios.get(currURL).then(res => {
+      setNext(res.data.info.next);
+      setPrev(res.data.info.prev);
+      setCharacters(res.data.results);
       setFilteredChar(res.data.results);
     });
-  }, []);
+  }, [currURL]);
 
-  useEffect(() => {
-    
-  }, [])
+  useEffect(() => {}, []);
 
   return (
     <div>
-      <Header/>.
-      <h1>Rick and Morty Characters!</h1>
-      <SearchForm search={search} searchHandler={searchHandler}/>
+      <Header />.<h1>Rick and Morty Characters!</h1>
+      <SearchForm search={search} searchHandler={searchHandler} />
       <section className="character-list d-flex flex-wrap">
         {filteredChar.map(char => {
           return <CharacterCard char={char} key={char.id} />;
         })}
       </section>
+      <Row>
+        <Col xs="6">
+          <Button onClick={() => setCurrURL(prev)}>Previous Page</Button>
+        </Col>
+        <Col xs="6">
+          <Button onClick={() => setCurrURL(next)}>Next Page</Button>
+        </Col>
+      </Row>
     </div>
   );
 }
