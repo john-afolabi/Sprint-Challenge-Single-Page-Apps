@@ -10,6 +10,7 @@ import EpisodeList from "./components/EpisodeList.js";
 export default function App() {
   return (
     <Container>
+      <Header/>
       <Route
         exact
         path="/"

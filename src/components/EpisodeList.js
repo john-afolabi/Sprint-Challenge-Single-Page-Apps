@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import EpisodeCard from "./EpisodeCard";
-import Header from "./Header";
 
 export default function EpisodeList() {
   const [episodes, setEpisodes] = useState([]);
@@ -14,7 +13,6 @@ export default function EpisodeList() {
 
   return (
     <div>
-      <Header />
       <h1>Rick and Morty Episodes!</h1>
       <section className="d-flex flex-wrap">
         {episodes.map(episode => {
