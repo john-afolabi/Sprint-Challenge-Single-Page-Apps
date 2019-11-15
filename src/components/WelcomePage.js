@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 export default function WelcomePage() {
   return (
@@ -11,6 +13,8 @@ export default function WelcomePage() {
           alt="rick"
         />
       </header>
+
+      <Link to="/characters"><Button>Rick & Morty Characters</Button></Link>
     </section>
   );
 }
